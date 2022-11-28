@@ -38,6 +38,7 @@ class ConverterTest {
         Customer customer = converter.toCustomer(customerDTO);
         assertEquals(customerDTO.getCustomerId(), customer.getId());
         assertEquals(customerDTO.getFullName(), customer.getName());
+        System.out.println(customer);
         assertEquals(customerDTO.getResidence(), customer.getAddress());
     }
 
@@ -47,9 +48,10 @@ class ConverterTest {
         OrderDTO orderDTO = new OrderDTO(faker.number().randomDigit() + "", LocalDate.now(),
                 faker.idNumber().valid(), orderDetailList);
         Order order = converter.toOrder(orderDTO);
-        assertEquals(orderDTO.getId(), order.getId());
+        assertEquals(orderDTO.getId(), order.getId() + "");
+        System.out.println(order);
         assertEquals(orderDTO.getClientId(), order.getCustomerId());
-        assertEquals(orderDTO.getDate().toString(), order.getOrderDate().toLocalDate());
+        assertEquals(orderDTO.getDate().toString(), order.getOrderDate().toString());
     }
 
     @Test
